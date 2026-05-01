@@ -1,51 +1,51 @@
 function run(option) {
 
-    // -------- RESULT --------
+    // ===== Q1 RESULT =====
     if (option == 1) {
-        let m1 = Number(prompt("Enter subject 1 marks:"));
-        let m2 = Number(prompt("Enter subject 2 marks:"));
+        var m1 = Number(prompt("Enter subject 1 marks:"));
+        var m2 = Number(prompt("Enter subject 2 marks:"));
 
         if (isNaN(m1) || isNaN(m2) || m1 < 0 || m1 > 100 || m2 < 0 || m2 > 100) {
-            alert("Please enter valid marks (0–100)");
+            alert("Invalid marks");
             return;
         }
 
-        let average = (m1 + m2) / 2;
+        var avg = (m1 + m2) / 2;
 
         if (m1 < 40 || m2 < 40) {
-            alert("Result: Fail");
-        } else if (average >= 75) {
-            alert("Result: Excellent");
-        } else if (average >= 60) {
-            alert("Result: Good");
-        } else if (average >= 50) {
-            alert("Result: Pass");
+            alert("Fail");
+        } else if (avg >= 75) {
+            alert("Excellent");
+        } else if (avg >= 60) {
+            alert("Good");
+        } else if (avg >= 50) {
+            alert("Pass");
         } else {
-            alert("Result: Fail");
+            alert("Fail");
         }
 
         if (m1 > 85 && m2 > 85) {
-            alert("Bonus: Outstanding Performance");
+            alert("Outstanding Performance");
         }
     }
 
-    // -------- LOGIN --------
+    // ===== Q2 LOGIN =====
     else if (option == 2) {
-        const savedUser = "admin";
-        const savedPass = "1234";
-        let attempts = 0;
+        var correctUser = "admin";
+        var correctPass = "1234";
+        var attempts = 0;
 
         while (attempts < 3) {
-            let username = prompt("Enter username:");
+            var user = prompt("Enter username:");
 
-            if (username !== savedUser) {
-                alert("Username not found");
+            if (user !== correctUser) {
+                alert("Access Denied");
                 return;
             }
 
-            let password = prompt("Enter password:");
+            var pass = prompt("Enter password:");
 
-            if (password === savedPass) {
+            if (pass === correctPass) {
                 if (attempts === 0) {
                     alert("Login Successful – Welcome Back");
                 } else {
@@ -54,88 +54,82 @@ function run(option) {
                 return;
             } else {
                 attempts++;
-                alert("Incorrect password");
+                alert("Incorrect Password");
             }
         }
 
         alert("Too many attempts");
     }
 
-    // -------- BILLING --------
+    // ===== Q3 BILLING =====
     else if (option == 3) {
-        let product = prompt("Enter product name (laptop/phone/mouse):");
-        let price = 0;
+        var item = prompt("Enter product (laptop/phone/mouse):");
+        var price = 0;
 
-        if (product === "laptop") price = 6000;
-        else if (product === "phone") price = 3000;
-        else if (product === "mouse") price = 500;
+        if (item === "laptop") price = 6000;
+        else if (item === "phone") price = 3000;
+        else if (item === "mouse") price = 500;
 
         if (price === 0) {
-            alert("Sorry, product not available");
+            alert("Product not available");
             return;
         }
 
-        let total = price;
+        var total = price;
 
         if (price > 4000) {
-            alert("Note: Premium Product Selected");
+            alert("Premium Product Selected");
         }
 
-        if (total > 5000) total *= 0.85;
-        else if (total > 3000) total *= 0.90;
+        if (total > 5000) total = total * 0.85;
+        else if (total > 3000) total = total * 0.90;
 
         alert("Final Bill: " + total);
     }
 
-    // -------- WORK HOURS --------
+    // ===== Q4 WORK HOURS =====
     else if (option == 4) {
-        let hours = Number(prompt("Enter working hours:"));
+        var hours = Number(prompt("Enter working hours:"));
 
         if (isNaN(hours) || hours < 0 || hours > 24) {
-            alert("Invalid hours");
+            alert("Invalid input");
             return;
         }
 
-        if (hours >= 8) {
-            alert("Status: Full Day");
-        } else if (hours >= 4) {
-            alert("Status: Half Day");
-        } else {
-            alert("Status: Absent");
-        }
+        if (hours >= 8) alert("Full Day");
+        else if (hours >= 4) alert("Partially Present");
+        else alert("Absent");
 
-        if (hours > 10) {
-            alert("Overtime Detected");
-        }
+        if (hours > 10) alert("Overtime Detected");
     }
 
-    // -------- PASSWORD --------
+    // ===== Q5 PASSWORD =====
     else if (option == 5) {
-        let password = prompt("Create a password:");
+        var password = prompt("Enter password:");
 
         if (password.length < 6) {
             alert("Weak Password");
             return;
         }
 
-        let hasLetters = /[a-zA-Z]/.test(password);
-        let hasNumbers = /[0-9]/.test(password);
+        var hasLetter = /[a-zA-Z]/.test(password);
+        var hasNumber = /[0-9]/.test(password);
 
-        if (hasLetters && hasNumbers) {
+        if (hasLetter && hasNumber) {
             alert("Strong Password");
         } else {
             alert("Medium Password");
         }
 
-        if (password.includes("123")) {
-            alert("Warning: Avoid common patterns");
+        if (password.indexOf("123") !== -1) {
+            alert("Avoid common patterns");
         }
     }
 
-    // -------- BANK --------
+    // ===== Q6 BANK =====
     else if (option == 6) {
-        let balance = 50000;
-        let deposit = Number(prompt("Enter deposit amount:"));
+        var balance = 50000;
+        var deposit = Number(prompt("Enter deposit amount:"));
 
         if (isNaN(deposit) || deposit <= 0) {
             alert("Invalid amount");
@@ -155,34 +149,28 @@ function run(option) {
         alert("Updated Balance: " + balance);
     }
 
-    // -------- ATTENDANCE --------
+    // ===== Q7 ATTENDANCE =====
     else if (option == 7) {
-        let days = Number(prompt("Enter days present (out of 30):"));
+        var days = Number(prompt("Enter days present (0-30):"));
 
         if (isNaN(days) || days < 0 || days > 30) {
             alert("Invalid input");
             return;
         }
 
-        let percentage = (days / 30) * 100;
+        var percent = (days / 30) * 100;
 
-        if (percentage >= 75) {
-            alert("Status: Eligible");
-        } else if (percentage >= 50) {
-            alert("Status: Warning");
-        } else {
-            alert("Status: Not Eligible");
-        }
+        if (percent >= 75) alert("Eligible");
+        else if (percent >= 50) alert("Warning");
+        else alert("Not Eligible");
 
-        if (percentage === 100) {
-            alert("Perfect Attendance");
-        }
+        if (percent === 100) alert("Perfect Attendance");
     }
 
-    // -------- MOBILE --------
+    // ===== Q8 MOBILE =====
     else if (option == 8) {
-        let brand = prompt("Enter brand (samsung/iphone/xiaomi):");
-        let price = 0;
+        var brand = prompt("Enter brand (samsung/iphone/xiaomi):");
+        var price = 0;
 
         if (brand === "samsung") price = 60000;
         else if (brand === "iphone") price = 120000;
@@ -195,26 +183,22 @@ function run(option) {
 
         alert("Price: " + price);
 
-        if (price > 50000) {
-            alert("High-End Device");
-        } else if (price >= 20000) {
-            alert("Mid-Range Device");
-        } else {
-            alert("Budget Device");
-        }
+        if (price > 50000) alert("High-End Device");
+        else if (price >= 20000) alert("Mid-Range Device");
+        else alert("Budget Device");
 
         if (brand === "samsung") {
             alert("Top Selling Brand");
         }
     }
 
-    // -------- QUIZ --------
+    // ===== Q9 QUIZ =====
     else if (option == 9) {
-        let score = 0;
+        var score = 0;
 
-        if (prompt("2 + 2 = ?") === "4") score++;
+        if (prompt("2+2=?") === "4") score++;
         if (prompt("Capital of Pakistan?") === "Islamabad") score++;
-        if (prompt("5 x 2 = ?") === "10") score++;
+        if (prompt("5*2=?") === "10") score++;
 
         if (score === 3) {
             alert("Excellent Performance");
@@ -228,25 +212,25 @@ function run(option) {
         }
     }
 
-    // -------- GROCERY --------
+    // ===== Q10 GROCERY =====
     else if (option == 10) {
-        let p1 = Number(prompt("Enter price 1:"));
-        let p2 = Number(prompt("Enter price 2:"));
-        let p3 = Number(prompt("Enter price 3:"));
+        var p1 = Number(prompt("Enter price 1:"));
+        var p2 = Number(prompt("Enter price 2:"));
+        var p3 = Number(prompt("Enter price 3:"));
 
-        if (p1 <= 0 || p2 <= 0 || p3 <= 0 || isNaN(p1) || isNaN(p2) || isNaN(p3)) {
+        if (isNaN(p1) || isNaN(p2) || isNaN(p3) || p1 <= 0 || p2 <= 0 || p3 <= 0) {
             alert("Invalid input");
             return;
         }
 
-        let total = p1 + p2 + p3;
+        var total = p1 + p2 + p3;
 
         if (p1 > 2000 || p2 > 2000 || p3 > 2000) {
             alert("Expensive Item Included");
         }
 
-        if (total > 5000) total *= 0.85;
-        else if (total > 3000) total *= 0.90;
+        if (total > 5000) total = total * 0.85;
+        else if (total > 3000) total = total * 0.90;
 
         alert("Final Bill: " + total);
     }
